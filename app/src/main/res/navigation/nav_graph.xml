@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/khataHomeFragment">
+
+    <fragment
+        android:id="@+id/khataHomeFragment"
+        android:name="com.ankursolution.jffmyadmin.jffkhata.KhataHomeFragment"
+        android:label="fragment_khata_home"
+        tools:layout="@layout/fragment_khata_home" >
+        <action
+            android:id="@+id/action_khataHomeFragment_to_addKhataCustomerFragment"
+            app:destination="@id/addKhataCustomerFragment" />
+        <action
+            android:id="@+id/action_khataHomeFragment_to_khataUserTransactionFragment"
+            app:destination="@id/khataUserTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addKhataCustomerFragment"
+        android:name="com.ankursolution.jffmyadmin.jffkhata.AddKhataCustomerFragment"
+        android:label="fragment_add_khata_customer"
+        tools:layout="@layout/fragment_add_khata_customer" />
+    <fragment
+        android:id="@+id/khataUserTransactionFragment"
+        android:name="com.ankursolution.jffmyadmin.jffkhata.KhataUserTransactionFragment"
+        android:label="KhataUserTransactionFragment" >
+        <argument
+            android:name="userid"
+            app:argType="string" />
+    </fragment>
+</navigation>
