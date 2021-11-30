@@ -1,8 +1,6 @@
 package com.ankursolution.jffmyadmin.retrofit
 
-import com.ankursolution.jffmyadmin.data.model.AddUserRequestModel
-import com.ankursolution.jffmyadmin.data.model.CommonResponseModel
-import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
+import com.ankursolution.jffmyadmin.data.model.*
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -17,8 +15,12 @@ interface ApiService {
     suspend fun addKhataCustomer(@Body addUserRequestModel: AddUserRequestModel):CommonResponseModel
 
 
-//    @POST("readallkhatatransaction.php")
-//    suspend fun addKhataCustomer(@Body addUserRequestModel: AddUserRequestModel):CommonResponseModel
+    @POST("readallkhatatransaction.php")
+    suspend fun getKhataTransaction(@Body khataTransactionRequestModel: KhataTransactionRequestModel):JffKhataTransactionModel
+
+
+    @POST("addkhatatransaction.php")
+    suspend fun addKhataTransaction(@Body addTransactionRequestModel: AddTransactionRequestModel):CommonResponseModel
 
 
 }

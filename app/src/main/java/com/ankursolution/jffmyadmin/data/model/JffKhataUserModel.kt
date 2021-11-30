@@ -8,7 +8,7 @@ data class JffKhataUserModel (@SerializedName("status") val status : Int,
 
     data class Result (
 
-        @SerializedName("id") val id : Int,
+        @SerializedName("id") val id : String,
         @SerializedName("name") val name : String,
         @SerializedName("mobileno") val mobileno : String,
         @SerializedName("address") val address : String,

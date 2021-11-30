@@ -4,30 +4,50 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ankursolution.jffmyadmin.R
+import com.ankursolution.jffmyadmin.base.BaseListAdapter
 import com.ankursolution.jffmyadmin.base.BaseRecyclerAdapter
 import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
 import com.ankursolution.jffmyadmin.databinding.ItemKhatausersBinding
+import com.ankursolution.jffmyadmin.jffkhata.KhataHomeFragmentDirections
+import javax.inject.Inject
 
-class AllKhataUsersAdapter(val context:Context,val list: List<JffKhataUserModel.Result>):RecyclerView.Adapter<AllKhataUsersAdapter.MyViewHolder>(){
+class AllKhataUsersAdapter @Inject constructor():BaseListAdapter<JffKhataUserModel.Result,ItemKhatausersBinding>(DiffCallback()){
 
-    class MyViewHolder(itemView: ItemKhatausersBinding) :RecyclerView.ViewHolder(itemView.root){
-        val binding = itemView
+    class DiffCallback:DiffUtil.ItemCallback<JffKhataUserModel.Result>(){
+        override fun areItemsTheSame(
+            oldItem: JffKhataUserModel.Result,
+            newItem: JffKhataUserModel.Result
+        ): Boolean {
+            return oldItem.id == newItem.id
+        }
 
+        override fun areContentsTheSame(
+            oldItem: JffKhataUserModel.Result,
+            newItem: JffKhataUserModel.Result
+        ): Boolean {
+            return oldItem==newItem
+        }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val v = ItemKhatausersBinding.inflate(LayoutInflater.from(context),parent,false)
-        return MyViewHolder(v)
+    override fun createBinding(parent: ViewGroup): ItemKhatausersBinding {
+        return DataBindingUtil.inflate(
+            LayoutInflater.from(parent.context),
+            R.layout.item_khatausers,parent,false)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding.model = list[position]
-    }
+    override fun bind(binding: ItemKhatausersBinding, item: JffKhataUserModel.Result?) {
+        binding.model = item
+        binding.mainItem.setOnClickListener {
+            it?.findNavController()?.navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToKhataUserTransactionFragment(item?.id))
 
-    override fun getItemCount(): Int {
-        return list.size
+        }
+
+
     }
 
 }

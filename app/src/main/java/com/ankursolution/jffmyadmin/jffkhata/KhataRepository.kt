@@ -1,8 +1,6 @@
 package com.ankursolution.jffmyadmin.jffkhata
 
-import com.ankursolution.jffmyadmin.data.model.AddUserRequestModel
-import com.ankursolution.jffmyadmin.data.model.CommonResponseModel
-import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
+import com.ankursolution.jffmyadmin.data.model.*
 import com.ankursolution.jffmyadmin.retrofit.di.HomeServiceImp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
@@ -25,4 +23,14 @@ class KhataRepository @Inject constructor(val homeServiceImp: HomeServiceImp) {
     }
 
 
+    suspend fun getUserTransaction(khataTransactionRequestModel: KhataTransactionRequestModel):Flow<JffKhataTransactionModel> = flow {
+        val response = homeServiceImp.api.getKhataTransaction(khataTransactionRequestModel)
+        emit(response)
+    }
+
+
+    suspend fun addUserTransaction(addTransactionRequestModel: AddTransactionRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.addKhataTransaction(addTransactionRequestModel)
+        emit(response)
+    }
 }

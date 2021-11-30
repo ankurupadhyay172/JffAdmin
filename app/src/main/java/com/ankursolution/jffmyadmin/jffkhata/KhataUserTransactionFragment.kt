@@ -9,24 +9,35 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
+import com.ankursolution.jffmyadmin.data.model.KhataTransactionRequestModel
 import com.ankursolution.jffmyadmin.data.model.adapter.AllKhataUsersAdapter
+import com.ankursolution.jffmyadmin.data.model.adapter.KhataTransactionAdapter
 import com.ankursolution.jffmyadmin.databinding.FragmentKhataHomeBinding
+import com.ankursolution.jffmyadmin.databinding.FragmentKhataUserTransactionBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_khata_home.*
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class KhataUserTransactionFragment : Fragment(R.layout.fragment_khata_home) {
+class KhataUserTransactionFragment : Fragment(R.layout.fragment_khata_user_transaction) {
 
     val khataViewModel: KhataViewModel by viewModels()
-    lateinit var binding:FragmentKhataHomeBinding
+    lateinit var binding:FragmentKhataUserTransactionBinding
+
+    val args:KhataUserTransactionFragmentArgs by navArgs()
+
+    @Inject
+    lateinit var mAdapter:KhataTransactionAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentKhataHomeBinding.inflate(inflater,container,false)
+        binding = FragmentKhataUserTransactionBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -37,25 +48,31 @@ class KhataUserTransactionFragment : Fragment(R.layout.fragment_khata_home) {
 
 
         getUsers()
+        rvTransaction.adapter = mAdapter
 
-        binding.addCustomer.setOnClickListener {
-            findNavController()?.navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToAddKhataCustomerFragment())
+//        binding.addCustomer.setOnClickListener {
+//            findNavController()?.navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToAddKhataCustomerFragment())
+//        }
+
+        binding.gave.setOnClickListener {
+            findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToAddAmountFragment(true,args.userid.toString()))
         }
 
+
+        binding.get.setOnClickListener {
+            findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToAddAmountFragment(false,args.userid.toString()))
+        }
     }
 
     private fun getUsers() {
-        khataViewModel.getAllJffKhataUsers().observe(requireActivity(), Observer {loadState->
+        khataViewModel.getKhataTransaction(KhataTransactionRequestModel(args.userid)).observe(requireActivity(), Observer { loadState->
             loadState.getValueOrNull()?.let {
-
-                val adapter = AllKhataUsersAdapter(requireContext(),it.result)
-                binding.rvUsers.adapter = adapter
-
-
+            mAdapter.submitList(it.result)
             }
-
-
         })
     }
+
+
+
 
 }

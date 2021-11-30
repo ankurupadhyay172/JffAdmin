@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/khataHomeFragment"
         android:name="com.ankursolution.jffmyadmin.jffkhata.KhataHomeFragment"
-        android:label="fragment_khata_home"
-        tools:layout="@layout/fragment_khata_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_khata_home">
         <action
             android:id="@+id/action_khataHomeFragment_to_addKhataCustomerFragment"
             app:destination="@id/addKhataCustomerFragment" />
@@ -20,12 +20,27 @@
     <fragment
         android:id="@+id/addKhataCustomerFragment"
         android:name="com.ankursolution.jffmyadmin.jffkhata.AddKhataCustomerFragment"
-        android:label="fragment_add_khata_customer"
+        android:label="Add Customer"
         tools:layout="@layout/fragment_add_khata_customer" />
     <fragment
         android:id="@+id/khataUserTransactionFragment"
         android:name="com.ankursolution.jffmyadmin.jffkhata.KhataUserTransactionFragment"
-        android:label="KhataUserTransactionFragment" >
+        android:label="Transaction">
+        <argument
+            android:name="userid"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_khataUserTransactionFragment_to_addAmountFragment"
+            app:destination="@id/addAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAmountFragment"
+        android:name="com.ankursolution.jffmyadmin.jffkhata.AddAmountFragment"
+        android:label="AddAmountFragment" >
+        <argument
+            android:name="isgave"
+            app:argType="boolean" />
         <argument
             android:name="userid"
             app:argType="string" />

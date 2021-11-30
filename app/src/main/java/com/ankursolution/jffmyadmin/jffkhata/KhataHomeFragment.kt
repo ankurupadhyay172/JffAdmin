@@ -7,19 +7,41 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
 import com.ankursolution.jffmyadmin.data.model.adapter.AllKhataUsersAdapter
 import com.ankursolution.jffmyadmin.databinding.FragmentKhataHomeBinding
+import com.ankursolution.jffmyadmin.retrofit.LoadState
+import com.ankursolution.jffmyadmin.utils.ext.NoConnectivityException
+import com.ankursolution.jffmyadmin.utils.ext.checkConnect
+import com.ankursolution.jffmyadmin.utils.ext.toAppError
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class KhataHomeFragment : Fragment(R.layout.fragment_khata_home) {
 
     val khataViewModel: KhataViewModel by viewModels()
     lateinit var binding:FragmentKhataHomeBinding
+
+    @Inject
+    lateinit var mAdapter:AllKhataUsersAdapter
+
+    var mResult:MutableLiveData<List<JffKhataUserModel.Result>> = MutableLiveData()
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        getUsers()
+
+    }
+
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,28 +56,58 @@ class KhataHomeFragment : Fragment(R.layout.fragment_khata_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.isLoading = true
+        binding.isVisible = true
+        mResult.observe(viewLifecycleOwner, Observer {
+
+            mAdapter.submitList(it)
+            mAdapter.notifyDataSetChanged()
+            binding.isLoading = false
+        })
 
 
-        getUsers()
 
+        binding.rvTransaction.adapter = mAdapter
         binding.addCustomer.setOnClickListener {
             findNavController()?.navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToAddKhataCustomerFragment())
         }
+
+
+
+
+        checkInternet()
+
+    }
+
+    private fun checkInternet() {
+
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            requireContext().checkConnect().collect {
+            when(it)
+            {
+
+                false->{
+                    Toast.makeText(requireContext(), "Connect with internet", Toast.LENGTH_SHORT).show()
+                    binding.isVisible = true
+                    binding.isLoading = false
+                    binding.error = NoConnectivityException().toAppError()
+                }
+                true->{
+                    binding.isVisible = false
+                    getUsers()
+                }
+
+            }
+            }
+        }
+
+
 
     }
 
     private fun getUsers() {
         khataViewModel.getAllJffKhataUsers().observe(requireActivity(), Observer {loadState->
             loadState.getValueOrNull()?.let {
-
-                val adapter = AllKhataUsersAdapter(requireContext(),it.result)
-                binding.rvUsers.adapter = adapter
-
-
-            }
-
-
-        })
-    }
-
-}
+                mResult.postValue(it.result)
+            } })
+    } }

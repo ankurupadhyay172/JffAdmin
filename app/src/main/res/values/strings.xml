@@ -1,5 +1,16 @@
 <resources>
-    <string name="app_name">jffmyadmin</string>
+    <string name="app_name">Jff Khata</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="error_network" translatable="false">A network error has occurred. Please try again</string>
+    <string name="error_no_internet_connection" translatable="false">No Internet found. Check your connection or try again</string>
+    <string name="error_server" translatable="false">A server error has occurred.Please try again</string>
+    <string name="error_unknown" translatable="false">A unknown error has occurred.Please try again </string>
+
+
+    <string name="retry">retry</string>
+
+    <string name="Rs">\u20B9</string>
 </resources>
