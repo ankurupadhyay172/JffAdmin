@@ -10,8 +10,10 @@ data class JffKhataTransactionModel (@SerializedName("status") val status : Int,
 
         @SerializedName("id") val id : String,
         @SerializedName("user_id") val user_id : String,
-        @SerializedName("give") val give : String,
-        @SerializedName("got") val got : String,
-        @SerializedName("timestamp") val timestamp : String
+        @SerializedName("give") val give : String?,
+        @SerializedName("got") val got : String?,
+        @SerializedName("timestamp") val timestamp : String,
+        @SerializedName("name") val name : String,
+
     )
 }

@@ -33,16 +33,37 @@
         <action
             android:id="@+id/action_khataUserTransactionFragment_to_addAmountFragment"
             app:destination="@id/addAmountFragment" />
+        <action
+            android:id="@+id/action_khataUserTransactionFragment_to_entryDetailFragment"
+            app:destination="@id/entryDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/addAmountFragment"
         android:name="com.ankursolution.jffmyadmin.jffkhata.AddAmountFragment"
         android:label="AddAmountFragment" >
+
+        <argument android:name="amount"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null"/>
         <argument
             android:name="isgave"
             app:argType="boolean" />
         <argument
             android:name="userid"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/entryDetailFragment"
+        android:name="com.ankursolution.jffmyadmin.jffkhata.EntryDetailFragment"
+        android:label="EntryDetailFragment" >
+
+        <argument
+            android:name="transactionId"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_entryDetailFragment_to_addAmountFragment"
+            app:destination="@id/addAmountFragment" />
     </fragment>
 </navigation>

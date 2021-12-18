@@ -23,4 +23,11 @@ interface ApiService {
     suspend fun addKhataTransaction(@Body addTransactionRequestModel: AddTransactionRequestModel):CommonResponseModel
 
 
+    @POST("readsingletransaction.php")
+    suspend fun getSingleKhataTransaction(@Body commonRequestModel: CommonRequestModel):JffKhataTransactionModel
+
+
+    @POST("deletekhatatransaction.php")
+    suspend fun deleteSingleKhataTransaction(@Body commonRequestModel: CommonRequestModel):CommonResponseModel
+
 }

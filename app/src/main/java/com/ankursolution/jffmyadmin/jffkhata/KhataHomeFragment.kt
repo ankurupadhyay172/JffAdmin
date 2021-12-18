@@ -39,6 +39,8 @@ class KhataHomeFragment : Fragment(R.layout.fragment_khata_home) {
         super.onCreate(savedInstanceState)
         getUsers()
 
+
+
     }
 
 

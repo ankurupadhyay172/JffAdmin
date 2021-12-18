@@ -55,12 +55,12 @@ class KhataUserTransactionFragment : Fragment(R.layout.fragment_khata_user_trans
 //        }
 
         binding.gave.setOnClickListener {
-            findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToAddAmountFragment(true,args.userid.toString()))
+            findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToAddAmountFragment(isgave = true,userid = args.userid.toString()))
         }
 
 
         binding.get.setOnClickListener {
-            findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToAddAmountFragment(false,args.userid.toString()))
+            findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToAddAmountFragment(isgave = false,userid = args.userid.toString()))
         }
     }
 

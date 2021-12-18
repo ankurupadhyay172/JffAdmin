@@ -38,6 +38,11 @@ class AddAmountFragment : Fragment(R.layout.fragment_add_amount) {
         super.onViewCreated(view, savedInstanceState)
 
         addTransaction()
+        args.amount?.let {
+            bind.etInput.setText(it)  
+        }
+
+
 
     }
 

@@ -16,6 +16,7 @@ import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
 import com.ankursolution.jffmyadmin.databinding.ItemKhataDetailsBinding
 import com.ankursolution.jffmyadmin.databinding.ItemKhatausersBinding
 import com.ankursolution.jffmyadmin.jffkhata.KhataHomeFragmentDirections
+import com.ankursolution.jffmyadmin.jffkhata.KhataUserTransactionFragmentDirections
 import javax.inject.Inject
 
 class KhataTransactionAdapter @Inject constructor():BaseListAdapter<JffKhataTransactionModel.Result,ItemKhataDetailsBinding>(DiffCallback()){
@@ -45,6 +46,12 @@ class KhataTransactionAdapter @Inject constructor():BaseListAdapter<JffKhataTran
     override fun bind(binding: ItemKhataDetailsBinding, item: JffKhataTransactionModel.Result?) {
 
         binding.model = item
+
+
+        binding.itemView.setOnClickListener {
+            it?.findNavController()?.navigate(KhataUserTransactionFragmentDirections.actionKhataUserTransactionFragmentToEntryDetailFragment(item?.id))
+        }
+
 
         if (item?.give?.isNotEmpty() == false)
         {

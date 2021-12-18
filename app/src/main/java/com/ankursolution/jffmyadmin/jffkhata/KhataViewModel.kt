@@ -5,8 +5,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.ankursolution.jffmyadmin.base.BaseViewModel
 import com.ankursolution.jffmyadmin.data.model.AddTransactionRequestModel
 import com.ankursolution.jffmyadmin.data.model.AddUserRequestModel
+import com.ankursolution.jffmyadmin.data.model.CommonRequestModel
 import com.ankursolution.jffmyadmin.data.model.KhataTransactionRequestModel
 import com.ankursolution.jffmyadmin.retrofit.LoadState
 import com.ankursolution.jffmyadmin.retrofit.LoadingState
@@ -21,7 +23,7 @@ import javax.inject.Inject
 @HiltViewModel
 class KhataViewModel @Inject constructor(
     @ApplicationContext val context: Context,
-    private val khataRepository: KhataRepository) : ViewModel(){
+    private val khataRepository: KhataRepository) : BaseViewModel(){
 
     public val loadState = MutableLiveData<LoadingState>(LoadingState.Loading)
 
@@ -54,6 +56,26 @@ class KhataViewModel @Inject constructor(
         }
     }
 
+
+
+    fun getSingleKhataTransaction(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        khataRepository.getSingleUserTransaction(commonRequestModel).toLoadingState().catch { e->
+            Log.d("mylogerror",""+e.message)
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
+    fun deleteSingleKhataTransaction(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        khataRepository.getSingleUserTransaction(commonRequestModel).toLoadingState().catch { e->
+            Log.d("mylogerror",""+e.message)
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
 
     fun addKhataTransaction(addTransactionRequestModel: AddTransactionRequestModel)= liveData(Dispatchers.IO){
         khataRepository.addUserTransaction(addTransactionRequestModel).toLoadingState().catch { e->

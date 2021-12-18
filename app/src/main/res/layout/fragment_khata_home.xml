@@ -35,6 +35,27 @@
 
 
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <TextView
+                android:id="@+id/tvReport"
+                android:fontFamily="@font/grillbold"
+                android:text="View Report >"
+                android:padding="15dp"
+                android:textSize="22sp"
+                android:textAlignment="center"
+                android:textColor="@color/purple_500"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </androidx.cardview.widget.CardView>
 
 
 
@@ -45,7 +66,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/entries"
+            app:layout_constraintTop_toBottomOf="@+id/cReport"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
             />
