@@ -20,12 +20,10 @@ abstract class BaseFragment<T:ViewDataBinding,V:BaseViewModel>: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? = DataBindingUtil.inflate<T>(inflater,getLayoutId(),container,false).also {
-
         mViewDataBinding = it
-        mViewDataBinding.setVariable(getBindingVariable(),getViewModel())
+   //     mViewDataBinding.setVariable(getBindingVariable(),getViewModel())
         mViewDataBinding.lifecycleOwner = viewLifecycleOwner
         mViewDataBinding.executePendingBindings()
-
     }.root
     /*
     @return layout resource id
@@ -36,7 +34,7 @@ abstract class BaseFragment<T:ViewDataBinding,V:BaseViewModel>: Fragment() {
     /*set binding variable
     @return veriable id */
 
-    abstract fun getBindingVariable():Int
+//    abstract fun getBindingVariable():Int
 
     /*
     Override for set binding variable

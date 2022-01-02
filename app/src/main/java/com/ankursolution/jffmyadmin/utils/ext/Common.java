@@ -7,6 +7,17 @@ public class Common {
         return "₹ "+price;
     }
 
+    public static String setTotalPrice(String price,String quantity)
+    {
+        double total =0;
+        try {
+            total = Double.parseDouble(price)*Integer.parseInt(quantity);
+        }catch (Exception e){e.printStackTrace();}
+
+        return "₹ "+total;
+
+    }
+
 
 
 }

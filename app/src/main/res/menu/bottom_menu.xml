@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/homeFragment"
+        android:title="My Orders" />
+
+    <item android:id="@+id/takeOrdersFragment"
+        android:title="Take Order"/>
+
+    <item android:id="@+id/showCategoriesFragment"
+        android:title="Add Items"/>
+</menu>

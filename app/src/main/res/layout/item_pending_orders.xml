@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View"/>
+        <import type="com.ankursolution.jffmyadmin.utils.ext.Common"/>
+        <variable
+            name="model"
+            type="com.ankursolution.jffmyadmin.data.model.OrderResultModel.Result" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="horizontal"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/rectangle_one_side"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_bg"
+            android:layout_width="10dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/rectangle_left_cure_blue" />
+
+        <LinearLayout
+            android:id="@+id/mainItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="8dp"
+            android:paddingBottom="14dp">
+
+
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name : "
+                        android:textColor="@color/subtxt_gray"
+                        android:textSize="13sp"
+                        android:layout_marginRight="9dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/grillbold" />
+
+                    <TextView
+                        android:id="@+id/uname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{model.user_name??`NA`}"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/grillmedium" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contact : "
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+
+                <TextView
+                    android:id="@+id/ucontact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.user_id??`NA`}"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  NA"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address : "
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+
+                <TextView
+                    android:id="@+id/uaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.delivery_address??`NA`}"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:visibility="@{model.table_no==null?View.GONE:View.VISIBLE}"
+                android:id="@+id/layout_table"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Table No : "
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold"/>
+                <TextView
+                    android:id="@+id/utable_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.table_no}"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Payment Status : "
+                        android:textColor="@color/subtxt_gray"
+                        android:textSize="13sp"
+                        android:layout_marginRight="9dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/grillbold" />
+
+                    <TextView
+                        android:id="@+id/payment_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{model.payment_status??`NA`}"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/grillmedium" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Payment Method : "
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+
+                <TextView
+                    android:id="@+id/payment_method"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.payment_method??`NA`}"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="  NA"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date : "
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{model.order_timestamp??`NA`}"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:id="@+id/txt_orderNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:fontFamily="@font/grillmedium"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/txt_date_time"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Order Type : `+model.order_type}"
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+
+                <TextView
+                    android:id="@+id/txt_way"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Order Status : `+model.order_status??`NA`}"
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delivery Charge :"
+                        android:textColor="@color/subtxt_gray"
+                        android:textSize="13sp"
+                        android:layout_marginRight="9dp"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/grillbold" />
+
+                    <TextView
+                        android:id="@+id/delivery_charge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Common.setPrice(model.delivery_charge)}"
+                        android:textColor="@color/green"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/grillmedium" />
+                </LinearLayout>
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/txt_item_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Item_x_3"
+                    android:textColor="@color/subtxt_gray"
+                    android:textSize="13sp"
+                    android:layout_marginRight="9dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/grillbold" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/txt_dollar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NA"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+                <TextView
+                    android:id="@+id/total_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{`Total(del incl) = `+Common.setPrice(model.total_amount??`NA`)}"
+                    android:textColor="@color/green"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/grillmedium" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

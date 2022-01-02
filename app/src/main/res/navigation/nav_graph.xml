@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/khataHomeFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/khataHomeFragment"
@@ -65,5 +65,78 @@
         <action
             android:id="@+id/action_entryDetailFragment_to_addAmountFragment"
             app:destination="@id/addAmountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_singleOrderFragment"
+            app:destination="@id/singleOrderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleOrderFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.orders.SingleOrderFragment"
+        android:label="SingleOrderFragment" >
+        <argument
+            android:name="order_id"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_singleOrderFragment_to_editOrderItemsFragment"
+            app:destination="@id/editOrderItemsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editOrderItemsFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.orders.EditOrderItemsFragment"
+        android:label="EditOrderItemsFragment" >
+        <argument
+            android:name="address"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+        <argument
+            android:name="tableno"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+        <argument
+            android:name="instruction"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+        <argument
+            android:name="discount"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+        <argument
+            android:name="order_id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/takeOrdersFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.takeorders.TakeOrdersFragment"
+        android:label="TakeOrdersFragment" />
+    <fragment
+        android:id="@+id/showCategoriesFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.products.ShowCategoriesFragment"
+        android:label="AddCategoriesFragment" >
+        <action
+            android:id="@+id/action_showCategoriesFragment_to_showProductsFragment"
+            app:destination="@id/showProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showProductsFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.products.ShowProductsFragment"
+        android:label="ShowProductsFragment" >
+        <argument
+            android:name="cat_id"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

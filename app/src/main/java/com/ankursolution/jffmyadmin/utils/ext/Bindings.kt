@@ -7,6 +7,7 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.data.model.AppError
+import com.bumptech.glide.Glide
 
 
 @BindingAdapter("isVisible")
@@ -42,11 +43,23 @@ fun TextView.errorTitle(appError: AppError?){
 
 
 @BindingAdapter("errorText")
-fun TextView.appError(appError: AppError?){
+fun TextView.appError(appError: AppError?) {
     appError?.let {
 
         setText(appError.stringRes())
     }
+
+
+    @BindingAdapter("errorText")
+    fun ImageView.setImageUrl(url: String?) {
+            url?.let {
+                Glide.with(context)
+                    .load(url)
+                    .placeholder(R.drawable.slogo)
+                    .into(this)
+        }
+    }
 }
+
 
 

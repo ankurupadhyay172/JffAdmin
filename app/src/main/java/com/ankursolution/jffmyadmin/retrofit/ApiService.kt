@@ -30,4 +30,24 @@ interface ApiService {
     @POST("deletekhatatransaction.php")
     suspend fun deleteSingleKhataTransaction(@Body commonRequestModel: CommonRequestModel):CommonResponseModel
 
+
+
+    //manage orders
+    @POST("readallpendingorders.php")
+    suspend fun getAllPendingOrders(@Body commonRequestModel: CommonRequestModel):OrderResultModel
+
+    @POST("readsingleorder.php")
+    suspend fun getSinglePendingOrders(@Body commonRequestModel: CommonRequestModel):SingleOrderResult
+
+    @POST("updateorder.php")
+    suspend fun updateOrder(@Body orderUpdaetRequestModel: OrderUpdateRequestModel):CommonResponseModel
+
+
+    @POST("readcategory.php")
+    suspend fun getCategory():CategoryModel
+
+    @POST("readproduct.php")
+    suspend fun getProducts(@Body commonRequestModel: CommonRequestModel):ProductModel
+
+
 }

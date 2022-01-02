@@ -13,4 +13,44 @@
     <string name="retry">retry</string>
 
     <string name="Rs">\u20B9</string>
+
+
+    <string-array name="order_types">
+        <item>Pending</item>
+        <item>Cooking</item>
+        <item>Ongoing</item>
+    </string-array>
+
+    <string name="pay_using">Pay Using</string>
+    <string name="pay_online">Pay Online</string>
+    <string name="upi_net_banking_wallet">UPI, Net banking, wallet</string>
+    <string name="cash">Cash</string>
+
+    <string name="pay_money_to_our_delivery_boy_by_cash_nwhen_service_is_done">Pay money to our delivery boy by cash\nwhen service is done.</string>
+    <string name="pay_after_service">Pay After Service</string>
+    <string name="pay_money_after_service_by_online_payment_nsystem">Pay money after service by online payment\nSystem.</string>
+    <string name="txt_Online">Online</string>
+    <string name="payment_details">Payment details</string>
+    <string name="cart_total">Cart Total</string>
+    <string name="convenience_charges">Delivery Charges</string>
+    <string name="apply_coupon">Apply Coupon</string>
+    <string name="sub_total">Sub Total</string>
+    <string name="total">Total</string>
+    <string name="txt_1">1</string>
+    <string name="total_cost">Total Cost</string>
+
+    <string name="delivery">delivery</string>
+    <string name="takeaway">takeaway</string>
+
+
+    <string name="online">online</string>
+    <string name="cod">cod</string>
+    <string name="pad">pad</string>
+
+
+    <string name="address">Address</string>
+    <string name="user_instruction">User Instructions</string>
+    <string name="table_no">Table No</string>
+    <string name="discount">Discount</string>
+
 </resources>

@@ -10,5 +10,26 @@
 
     <color name="main_bg">#2b6777</color>
     <color name="jffcolor">#CB0911</color>
+    <color name="subtxt_gray">#9fa3a8</color>
+    <color name="green">#2ac17e</color>
+
+    <color name="smoke_color_f8f9fa">#f8f9fa</color>
+    <color name="black_25303c">#25303c</color>
+    <color name="title_color_22282f">#22282f</color>
+    <color name="silver_909397">#909397</color>
+    <color name="light_red_fff1eb">#fff1eb</color>
+    <color name="orange_ff9b70">#ff9b70</color>
+    <color name="smoke_dfe4eb">#dfe4eb</color>
+    <color name="viewline_d2dce9">#d2dce9</color>
+    <color name="red_ff354e">#ff354e</color>
+
+    <color name="bg_fafafa">#fafafa</color>
+    <color name="grey_828990">#828990</color>
+    <color name="smoke_gray">#a2a2a2</color>
+    <color name="green_15d1a4">#15d1a4</color>
+    <color name="red_ff577f">#ff577f</color>
+    <color name="red2">#df3030</color>
+    <color name="orange">#fa6c3c</color>
+
 
 </resources>
