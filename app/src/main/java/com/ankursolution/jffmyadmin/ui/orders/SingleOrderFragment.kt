@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.ankursolution.jffmyadmin.BR
+import com.ankursolution.jffmyadmin.MainActivity
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.base.BaseFragment
 import com.ankursolution.jffmyadmin.data.model.SingleOrderResult
@@ -36,6 +37,8 @@ class SingleOrderFragment:BaseFragment<FragmentSingleOrderBinding, HomeViewModel
         handleDelivery()
         handlePayment()
 
+
+
     }
 
 
@@ -44,7 +47,6 @@ class SingleOrderFragment:BaseFragment<FragmentSingleOrderBinding, HomeViewModel
 
         homeViewModel.getSinglePendingOrders(str).observe(viewLifecycleOwner, Observer {
             it.getValueOrNull()?.let {
-
 
                 try {
                     getViewDataBinding().model = it.result.get(0)
@@ -71,6 +73,11 @@ class SingleOrderFragment:BaseFragment<FragmentSingleOrderBinding, HomeViewModel
                 handleEditOptions(it.result[0])
             }
         })
+
+
+        add_item.setOnClickListener {
+            findNavController().navigate(SingleOrderFragmentDirections.actionSingleOrderFragmentToShowCategoriesFragment())
+        }
     }
 
     private fun handleEditOptions(result: SingleOrderResult.Result) {

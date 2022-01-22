@@ -22,6 +22,10 @@ class KhataRepository @Inject constructor(val homeServiceImp: HomeServiceImp) {
         emit(response)
     }
 
+    suspend fun updateKhataUser(addUserRequestModel: AddUserRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.updateKhataCustomer(addUserRequestModel)
+        emit(response)
+    }
 
     suspend fun getUserTransaction(khataTransactionRequestModel: KhataTransactionRequestModel):Flow<JffKhataTransactionModel> = flow {
         val response = homeServiceImp.api.getKhataTransaction(khataTransactionRequestModel)
@@ -36,13 +40,24 @@ class KhataRepository @Inject constructor(val homeServiceImp: HomeServiceImp) {
     }
 
 
-    suspend fun DeleteSingleUserTransaction(commonRequestModel: CommonRequestModel):Flow<JffKhataTransactionModel> = flow {
-        val response = homeServiceImp.api.getSingleKhataTransaction(commonRequestModel)
+    suspend fun deleteSingleUserTransaction(commonRequestModel: CommonRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.deleteSingleKhataTransaction(commonRequestModel)
         emit(response)
     }
 
     suspend fun addUserTransaction(addTransactionRequestModel: AddTransactionRequestModel):Flow<CommonResponseModel> = flow {
         val response = homeServiceImp.api.addKhataTransaction(addTransactionRequestModel)
+        emit(response)
+    }
+
+    suspend fun updateAmount(updateAmountRequestModel: UpdateAmountRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.updateAmount(updateAmountRequestModel)
+        emit(response)
+    }
+
+
+    suspend fun deleteKhataUser(commonRequestModel: CommonRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.deleteKhataUser(commonRequestModel)
         emit(response)
     }
 }

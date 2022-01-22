@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ankursolution.jffmyadmin.R
+import com.ankursolution.jffmyadmin.data.model.CommonRequestModel
 import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
 import com.ankursolution.jffmyadmin.data.model.adapter.AllKhataUsersAdapter
 import com.ankursolution.jffmyadmin.databinding.FragmentKhataHomeBinding
@@ -40,7 +41,6 @@ class KhataHomeFragment : Fragment(R.layout.fragment_khata_home) {
         getUsers()
 
 
-
     }
 
 
@@ -60,24 +60,56 @@ class KhataHomeFragment : Fragment(R.layout.fragment_khata_home) {
 
         binding.isLoading = true
         binding.isVisible = true
-        mResult.observe(viewLifecycleOwner, Observer {
-
-            mAdapter.submitList(it)
-            mAdapter.notifyDataSetChanged()
-            binding.isLoading = false
-        })
 
 
 
+        getUserData()
+        deleteUser()
+        editUser()
         binding.rvTransaction.adapter = mAdapter
         binding.addCustomer.setOnClickListener {
-            findNavController()?.navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToAddKhataCustomerFragment())
+            findNavController().navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToAddKhataCustomerFragment())
         }
 
 
 
 
         checkInternet()
+
+    }
+
+    private fun editUser() {
+        mAdapter.updateUser ={_,data->
+            findNavController()?.navigate(KhataHomeFragmentDirections.actionKhataHomeFragmentToAddKhataCustomerFragment(data))
+        }
+    }
+
+    private fun getUserData() {
+        mResult.observe(viewLifecycleOwner, Observer {
+
+            mAdapter.submitList(it)
+            mAdapter.notifyDataSetChanged()
+            binding.isLoading = false
+        })
+    }
+
+    private fun deleteUser() {
+        mAdapter.deleteUser = {
+            khataViewModel.deleteKhataUser(CommonRequestModel(it)).observe(viewLifecycleOwner,
+                {
+                    it.getValueOrNull().let {
+                        if (it?.status==1)
+                        {
+                            Toast.makeText(requireContext(), "User Deleted successfully", Toast.LENGTH_SHORT).show()
+                            getUsers()
+                        }
+                    }
+
+
+
+                })
+        }
+
 
     }
 

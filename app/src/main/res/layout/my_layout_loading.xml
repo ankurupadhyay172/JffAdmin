@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:spin="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="isLoading"
+            type="java.lang.Boolean" />
+        <variable
+            name="error"
+            type="com.ankursolution.jffmyadmin.data.model.AppError" />
+
+        <variable
+            name="retryListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/grid_2">
+
+        <ImageView
+            android:id="@+id/logo"
+            isVisible="@{error != null}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:errorImage="@{error}"
+            app:layout_constraintBottom_toTopOf="@+id/title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/title"
+            isVisible="@{error != null}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:paddingHorizontal="@dimen/grid_2"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            app:errorTitle="@{error}"
+            app:layout_constraintBottom_toTopOf="@+id/progressBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
+            tools:text="something_went_wrong_error" />
+
+
+        <com.ranosys.aarong.utils.view.SpinView
+            android:id="@+id/progressBar"
+            isVisible="@{isLoading}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            app:layout_constraintVertical_chainStyle="packed"
+            spin:ccolor="?attr/colorOnSurface"
+            spin:corners="5"
+            spin:length="12dp"
+            spin:lines="13"
+            spin:radius="7dp"
+            spin:speed="2"
+            app:layout_constraintBottom_toTopOf="@+id/labelError"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            spin:width="3dp" />
+
+
+        <TextView
+            android:id="@+id/labelError"
+            isVisible="@{error != null}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_1"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:gravity="center"
+            app:errorText="@{error}"
+            app:layout_constraintBottom_toTopOf="@+id/btnRetry"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progressBar"
+            tools:text="@string/error_network" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRetry"
+            isVisible="@{error != null}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/grid_2"
+            android:onClick="@{retryListener}"
+            android:text="title_retry"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/labelError" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

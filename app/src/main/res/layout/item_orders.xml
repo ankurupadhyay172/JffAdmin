@@ -36,6 +36,7 @@
                 app:riv_corner_radius="8.3dp"
                 app:riv_mutate_background="true"
                 app:riv_oval="false"
+                setImage="@{model.product_image}"
                 app:riv_tile_mode="clamp" />
 
             <LinearLayout

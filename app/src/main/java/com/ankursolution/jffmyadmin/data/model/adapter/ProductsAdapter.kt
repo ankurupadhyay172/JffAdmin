@@ -1,27 +1,18 @@
 package com.ankursolution.jffmyadmin.data.model.adapter
 
-import android.content.Context
+import android.app.AlertDialog
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.base.BaseListAdapter
-import com.ankursolution.jffmyadmin.base.BaseRecyclerAdapter
 import com.ankursolution.jffmyadmin.data.model.*
 import com.ankursolution.jffmyadmin.databinding.*
-import com.ankursolution.jffmyadmin.jffkhata.KhataHomeFragmentDirections
-import com.ankursolution.jffmyadmin.ui.HomeFragment
-import com.ankursolution.jffmyadmin.ui.HomeFragmentDirections
-import com.ankursolution.jffmyadmin.ui.products.ShowCategoriesFragmentDirections
-import com.ankursolution.jffmyadmin.ui.products.ShowProductsFragmentArgs
-import com.bumptech.glide.Glide
 import javax.inject.Inject
 
-class ProductsAdapter @Inject constructor():BaseListAdapter<ProductModel.Result,ItemProductBinding>(DiffCallback()){
+class ProductsAdapter @Inject constructor():
+    BaseListAdapter<ProductModel.Result, ItemProductBinding>(DiffCallback()){
 
     class DiffCallback:DiffUtil.ItemCallback<ProductModel.Result>(){
         override fun areItemsTheSame(
@@ -48,11 +39,21 @@ class ProductsAdapter @Inject constructor():BaseListAdapter<ProductModel.Result,
     override fun bind(binding: ItemProductBinding, item: ProductModel.Result?) {
 
         binding.model = item
-//        item?.varients.let {
-//
-//            if (it.isNullOrEmpty().not())
-//            binding.varient = it?.get(0)
-//        }
+        item?.varients.let {
+
+            if (it.isNullOrEmpty().not())
+            {
+                binding.varient = it?.get(0)
+                binding.size.setOnClickListener {v->
+
+                    var adapter = SpinnerAdapter(binding.price.context,R.layout.spinner_item,it!!)
+                    AlertDialog.Builder(v.context).setTitle("Select Size")
+                        .setAdapter(adapter) { dialog, which ->
+                            binding.varient = it.get(which)
+                        }.create().show()
+                }
+            }
+        }
 
 
 //        binding.headerlayout.setOnClickListener {v->

@@ -31,15 +31,18 @@ class ShowProductsFragment : BaseFragment<FragmentShowProductBinding,HomeViewMod
         getViewDataBinding().rvProducts.adapter = adapter
         getProductsData()
 
-
     }
 
     private fun getProductsData() {
         homeViewModel.getProduct(CommonRequestModel(args.catId)).observe(viewLifecycleOwner, {
             it?.getValueOrNull().let {
+
                 if (it?.status==1)
                 {
-                    adapter.submitList(it.result)
+                    it.result?.let {
+
+                        adapter.submitList(it)
+                    }
                 }
 
             }

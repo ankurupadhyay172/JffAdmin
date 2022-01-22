@@ -4,8 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.ankursolution.jffmyadmin.base.BaseViewModel
-import com.ankursolution.jffmyadmin.data.model.CommonRequestModel
-import com.ankursolution.jffmyadmin.data.model.OrderUpdateRequestModel
+import com.ankursolution.jffmyadmin.data.model.*
 import com.ankursolution.jffmyadmin.jffkhata.HomeRepository
 import com.ankursolution.jffmyadmin.jffkhata.KhataRepository
 import com.ankursolution.jffmyadmin.retrofit.LoadingState
@@ -33,6 +32,24 @@ class HomeViewModel @Inject constructor(@ApplicationContext val context: Context
     }
 
 
+    fun getOrderHistory(status:String?)= liveData(Dispatchers.IO){
+        homeRepository.getOrderHistory(CommonRequestModel(status)).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
+    fun getCartItem(status:String?)= liveData(Dispatchers.IO){
+        homeRepository.getCartItem(CommonRequestModel(id =status)).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
 
     fun getSinglePendingOrders(status:String?)= liveData(Dispatchers.IO){
         homeRepository.getSinglePendingOrders(CommonRequestModel(status)).toLoadingState().catch { e->
@@ -50,6 +67,16 @@ class HomeViewModel @Inject constructor(@ApplicationContext val context: Context
         }
     }
 
+
+
+    fun updateCart(commonRequestModel: UpdateCartRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.updateCart(commonRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
     fun getCategory()= liveData(Dispatchers.IO){
         homeRepository.getCategory().toLoadingState().catch { e->
             loadState.postValue(LoadingState.Error(e))
@@ -61,6 +88,49 @@ class HomeViewModel @Inject constructor(@ApplicationContext val context: Context
 
     fun getProduct(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
         homeRepository.getProducts(commonRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun addToCart(addToCartRequestModel: AddToCartRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.addToCart(addToCartRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
+
+    fun loginUser(loginRequestModel: LoginRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.loginUser(loginRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
+    fun addOrder(addOrderRequestModel: AddOrderRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.addOrder(addOrderRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun getCart(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.getCart(commonRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun completeJffOrder(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.completeJffOrder(commonRequestModel).toLoadingState().catch { e->
             loadState.postValue(LoadingState.Error(e))
         }.collect {
             emit(it)

@@ -327,28 +327,6 @@
                 </LinearLayout>
 
                 <TextView
-                    android:visibility="gone"
-                    android:id="@+id/txt_item_count"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Item_x_3"
-                    android:textColor="@color/subtxt_gray"
-                    android:textSize="13sp"
-                    android:layout_marginRight="9dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/grillbold" />
-
-                <TextView
-                    android:visibility="gone"
-                    android:id="@+id/txt_dollar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="NA"
-                    android:textColor="@color/green"
-                    android:textSize="14sp"
-                    android:fontFamily="@font/grillmedium" />
-
-                <TextView
                     android:id="@+id/total_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -357,7 +335,19 @@
                     android:textSize="14sp"
                     android:fontFamily="@font/grillmedium" />
 
+
+
+
             </LinearLayout>
+
+            <Button
+                android:id="@+id/update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Update Status"
+                android:layout_gravity="end"
+                android:textSize="14sp"
+                android:fontFamily="@font/grillmedium" />
 
         </LinearLayout>
 

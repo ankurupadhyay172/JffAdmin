@@ -12,6 +12,8 @@ data class JffKhataUserModel (@SerializedName("status") val status : Int,
         @SerializedName("name") val name : String,
         @SerializedName("mobileno") val mobileno : String,
         @SerializedName("address") val address : String,
+        @SerializedName("type") val type : String,
+        @SerializedName("last_transaction") val last_transaction : String,
         @SerializedName("timestamp") val timestamp : String
     )
 }

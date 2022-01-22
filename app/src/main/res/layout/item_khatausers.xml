@@ -65,11 +65,14 @@
                     />
 
 
+
+
+
                 <TextView
                   android:gravity="end"
                     android:layout_gravity="end"
                     android:id="@+id/status"
-                    android:text="Taken"
+                    android:text="@{model.type}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
@@ -83,9 +86,43 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 tools:text="50"
-                android:text="@{Common.setPrice(`0`)}" />
+                 />
         </LinearLayout>
 
+        <LinearLayout
+            android:weightSum="20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvEdit"
+            android:textSize="15sp"
+            android:textColor="@color/purple_200"
+            android:textAlignment="center"
+            android:text="EDIT CUSTOMER"
+            android:fontFamily="@font/grillbold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            android:layout_weight="10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvDelete"
+                android:textSize="15sp"
+                android:textColor="@color/purple_200"
+                android:textAlignment="center"
+                android:text="DELETE CUSTOMER"
+                android:fontFamily="@font/grillbold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDate"
+                android:layout_weight="10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

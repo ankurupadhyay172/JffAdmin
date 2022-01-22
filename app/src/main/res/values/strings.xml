@@ -53,4 +53,13 @@
     <string name="table_no">Table No</string>
     <string name="discount">Discount</string>
 
+
+    <string name="add">add</string>
+    <string name="delete">delete</string>
+    <string name="update">update</string>
+
+    <string name="error_mobile">Please enter customer mobile no</string>
+    <string name="error_name">Please enter customer name</string>
+
+    <string name="order_success">Order place successfully</string>
 </resources>

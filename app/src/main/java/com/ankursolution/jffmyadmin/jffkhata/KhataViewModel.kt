@@ -6,10 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.ankursolution.jffmyadmin.base.BaseViewModel
-import com.ankursolution.jffmyadmin.data.model.AddTransactionRequestModel
-import com.ankursolution.jffmyadmin.data.model.AddUserRequestModel
-import com.ankursolution.jffmyadmin.data.model.CommonRequestModel
-import com.ankursolution.jffmyadmin.data.model.KhataTransactionRequestModel
+import com.ankursolution.jffmyadmin.data.model.*
 import com.ankursolution.jffmyadmin.retrofit.LoadState
 import com.ankursolution.jffmyadmin.retrofit.LoadingState
 import com.ankursolution.jffmyadmin.utils.ext.toLoadingState
@@ -47,6 +44,16 @@ class KhataViewModel @Inject constructor(
     }
 
 
+    fun updateKhataUser(addUserRequestModel: AddUserRequestModel)= liveData(Dispatchers.IO){
+        khataRepository.updateKhataUser(addUserRequestModel).toLoadingState().catch { e->
+            Log.d("mylogerror",""+e.message)
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
     fun getKhataTransaction(khataTransactionRequestModel: KhataTransactionRequestModel)= liveData(Dispatchers.IO){
         khataRepository.getUserTransaction(khataTransactionRequestModel).toLoadingState().catch { e->
             Log.d("mylogerror",""+e.message)
@@ -69,7 +76,7 @@ class KhataViewModel @Inject constructor(
 
 
     fun deleteSingleKhataTransaction(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
-        khataRepository.getSingleUserTransaction(commonRequestModel).toLoadingState().catch { e->
+        khataRepository.deleteSingleUserTransaction(commonRequestModel).toLoadingState().catch { e->
             Log.d("mylogerror",""+e.message)
             loadState.postValue(LoadingState.Error(e))
         }.collect {
@@ -79,6 +86,25 @@ class KhataViewModel @Inject constructor(
 
     fun addKhataTransaction(addTransactionRequestModel: AddTransactionRequestModel)= liveData(Dispatchers.IO){
         khataRepository.addUserTransaction(addTransactionRequestModel).toLoadingState().catch { e->
+            Log.d("mylogerror",""+e.message)
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun updateAmount(updateAmountRequestModel: UpdateAmountRequestModel)= liveData(Dispatchers.IO){
+        khataRepository.updateAmount(updateAmountRequestModel).toLoadingState().catch { e->
+            Log.d("mylogerror",""+e.message)
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+
+    fun deleteKhataUser(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        khataRepository.deleteKhataUser(commonRequestModel).toLoadingState().catch { e->
             Log.d("mylogerror",""+e.message)
             loadState.postValue(LoadingState.Error(e))
         }.collect {

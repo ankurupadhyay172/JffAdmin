@@ -16,22 +16,26 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment :BaseFragment<FragmentHomeBinding,HomeViewModel>(){
 
     val homeViewModel: HomeViewModel by viewModels()
-
+    lateinit var order_types:Array<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val order_types = resources.getStringArray(R.array.order_types)
+        order_types = resources.getStringArray(R.array.order_types)
+
         val adapter = ViewPagerAdapter(order_types,this)
         getViewDataBinding().viewPager2.adapter = adapter
+        updateData()
 
+
+    }
+    fun updateData()
+    {
         TabLayoutMediator(getViewDataBinding().tabLayout,getViewDataBinding().viewPager2){tab,position->
             tab.text = order_types[position]
         }.attach()
 
-
     }
-
 
 
     override fun getLayoutId() = R.layout.fragment_home

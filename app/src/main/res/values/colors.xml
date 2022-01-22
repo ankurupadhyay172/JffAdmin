@@ -31,5 +31,11 @@
     <color name="red2">#df3030</color>
     <color name="orange">#fa6c3c</color>
 
+    <color name="transperent">#00000000</color>
 
+    <color name="dark_gray">#757575</color>
+    <color name="light_white">#fff8f9</color>
+    <color name="white_opecity">#dfdede</color>
+    <color name="viewLine">#50acacac</color>
+    <color name="red">#f22c2c</color>
 </resources>

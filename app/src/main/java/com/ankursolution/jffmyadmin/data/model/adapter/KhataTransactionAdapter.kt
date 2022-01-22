@@ -1,25 +1,20 @@
 package com.ankursolution.jffmyadmin.data.model.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.base.BaseListAdapter
-import com.ankursolution.jffmyadmin.base.BaseRecyclerAdapter
 import com.ankursolution.jffmyadmin.data.model.JffKhataTransactionModel
-import com.ankursolution.jffmyadmin.data.model.JffKhataUserModel
 import com.ankursolution.jffmyadmin.databinding.ItemKhataDetailsBinding
-import com.ankursolution.jffmyadmin.databinding.ItemKhatausersBinding
-import com.ankursolution.jffmyadmin.jffkhata.KhataHomeFragmentDirections
 import com.ankursolution.jffmyadmin.jffkhata.KhataUserTransactionFragmentDirections
 import javax.inject.Inject
 
-class KhataTransactionAdapter @Inject constructor():BaseListAdapter<JffKhataTransactionModel.Result,ItemKhataDetailsBinding>(DiffCallback()){
+class KhataTransactionAdapter @Inject constructor():
+    BaseListAdapter<JffKhataTransactionModel.Result, ItemKhataDetailsBinding>(DiffCallback()){
 
     class DiffCallback:DiffUtil.ItemCallback<JffKhataTransactionModel.Result>(){
         override fun areItemsTheSame(

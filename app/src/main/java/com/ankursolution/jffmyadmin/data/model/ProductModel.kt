@@ -25,4 +25,7 @@ data class Varients (
     @SerializedName("varientPrice") val varientPrice : String,
     @SerializedName("image") val image : String?,
     @SerializedName("pid") val pid : String?
+
 )
+
+

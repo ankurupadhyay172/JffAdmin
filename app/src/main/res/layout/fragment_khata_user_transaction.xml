@@ -72,6 +72,7 @@
             android:id="@+id/rvTransaction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/youget"
@@ -122,16 +123,17 @@
             android:layout_marginBottom="45dp"/>
 
         <include
-            android:visibility="@{isVisible?View.VISIBLE:View.GONE}"
             android:id="@+id/loading"
             layout="@layout/layout_loading"
             android:elevation="4dp"
-            bind:isLoading = "@{isLoading}"
-            bind:error="@{error}"
+
+            android:visibility="@{isVisible?View.VISIBLE:View.GONE}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:error="@{error}"
+            bind:isLoading="@{isLoading}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

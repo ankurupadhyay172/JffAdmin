@@ -45,6 +45,7 @@
 
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/tvReport"
                 android:fontFamily="@font/grillbold"
                 android:text="View Report >"

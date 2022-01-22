@@ -53,8 +53,6 @@
                     android:id="@+id/payment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:text="@{model.got != null ? Common.setPrice(model.got) : Common.setPrice(model.give)}"
-                    android:text="@{model.got != null ? Common.setPrice(model.got) : Common.setPrice(model.give)}"
                     android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -75,13 +73,13 @@
 
 
                 <TextView
+                    android:id="@+id/type"
                     android:layout_marginRight="30dp"
                     android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@+id/name"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:text="@{`\u20B9`+model.got != null ? `You got` : `You give`}"
                     tools:text="You Gave" />
 
                 <TextView

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.ankursolution.jffmyadmin.data.model.CartOrderResult.Result"/>
+        <variable
+            name="model"
+            type="Result" />
+
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/rect_gray_border"
+            app:cardCornerRadius="10dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:transitionName="viewimage"
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        setImage="@{model.image}"
+                        android:src="@drawable/slogo"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:fontFamily="@font/grillbold"
+                        android:id="@+id/tv1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="13.3dp" />
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+                            android:text="Price "
+                            android:fontFamily="@font/grillbold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:textSize="12sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="2.5dp" />
+
+                        <TextView
+                            android:fontFamily="@font/grillbold"
+                            android:id="@+id/tv2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:textSize="12sp"
+                            setprice="@{model.varientPrice}"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="2.5dp" />
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/size"
+                        android:layout_marginLeft="10dp"
+                        android:padding="5dp"
+                        android:text="@{`Size : `+model.varientName}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+
+
+                    <FrameLayout
+
+                        android:layout_marginRight="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center|end"
+
+                        >
+
+                        <TextView
+                            android:visibility="gone"
+                            android:id="@+id/tvAdd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rect_pink_dark"
+                            android:fontFamily="@font/grillbold"
+                            android:includeFontPadding="false"
+                            android:paddingStart="18dp"
+                            android:paddingTop="3.7dp"
+                            android:paddingEnd="18dp"
+                            android:paddingBottom="3.7dp"
+                            android:text="ADD"
+                            android:textColor="@color/white"
+                            android:textSize="15sp" />
+
+                        <LinearLayout
+                            android:id="@+id/li_quantity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imgMinus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rect_pink_leftcure"
+                                android:src="@drawable/ic_minus" />
+
+                            <TextView
+                                android:id="@+id/tvNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:fontFamily="@font/grillbold"
+                                android:includeFontPadding="false"
+                                android:text="@{model.quan}"
+                                android:textColor="@color/black_25303c"
+                                android:textSize="15sp" />
+
+                            <ImageView
+                                android:id="@+id/imgPlus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/rect_pink_rightcure"
+                                android:src="@drawable/ic_add" />
+                        </LinearLayout>
+
+
+
+
+                    </FrameLayout>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/discount"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rect_green"
+                    android:fontFamily="@font/grillmedium"
+                    android:paddingLeft="12.1dp"
+                    android:paddingTop="4.2dp"
+                    android:paddingRight="14.9dp"
+                    android:paddingBottom="4.2dp"
+
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
+
+
+                <ImageView
+                    android:id="@+id/delete_item"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_delete"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grillmedium"
+                    android:paddingRight="12.1dp"
+                    android:paddingTop="10.2dp"
+                    android:paddingLeft="14.9dp"
+                    android:paddingBottom="4.2dp"
+
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</layout>

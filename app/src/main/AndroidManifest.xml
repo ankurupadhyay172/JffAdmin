@@ -3,7 +3,8 @@
     package="com.ankursolution.jffmyadmin">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -12,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Jffmyadmin">
-        <activity android:name=".MainActivity" android:exported="true"
+        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
