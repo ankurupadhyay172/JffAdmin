@@ -2,8 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'com.google.gms.google-services'
-
-
     id("androidx.navigation.safeargs.kotlin")
 }
 
@@ -26,22 +24,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    def BASE_URL = "BASE_URL"
 
-    flavorDimensions 'default'
-
-    productFlavors{
-        staging{
-            dimension 'default'
-            applicationIdSuffix ".staging"
-            buildConfigField 'String',BASE_URL,STAGING_API_URL
-        }
-        production{
-            dimension 'default'
-            applicationIdSuffix ".production"
-            buildConfigField 'String',BASE_URL,API_URL
-        }
-    }
 
 
     buildTypes {
@@ -49,8 +32,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-
-
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
