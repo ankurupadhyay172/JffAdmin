@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Jff Khata</string>
+    <string name="app_name">Jff Staff</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
@@ -14,11 +14,25 @@
 
     <string name="Rs">\u20B9</string>
 
+    <string-array name="order_status">
+        <item>pending</item>
+        <item>cooking</item>
+        <item>ongoing</item>
+        <item>cancel</item>
+    </string-array>
+
+
+    <string-array name="choose_action">
+        <item>edit</item>
+        <item>delete</item>
+
+    </string-array>
 
     <string-array name="order_types">
         <item>Pending</item>
         <item>Cooking</item>
         <item>Ongoing</item>
+
     </string-array>
 
     <string name="pay_using">Pay Using</string>
@@ -41,6 +55,9 @@
 
     <string name="delivery">delivery</string>
     <string name="takeaway">takeaway</string>
+    <string name="table">table</string>
+
+    <string name="order_complete">delivered</string>
 
 
     <string name="online">online</string>
@@ -62,4 +79,6 @@
     <string name="error_name">Please enter customer name</string>
 
     <string name="order_success">Order place successfully</string>
+
+    <string name="cart_success">Cart updated successfully</string>
 </resources>

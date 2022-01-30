@@ -275,6 +275,7 @@
                             android:orientation="horizontal">
 
                             <RadioButton
+
                                 setdelivery="@{model.order_type}"
                                 android:id="@+id/rbdelivery"
                                 android:layout_width="wrap_content"
@@ -373,6 +374,50 @@
                                     android:fontFamily="@font/grillmedium"
                                     android:includeFontPadding="false"
                                     android:text="In which you can order online and receive order from shop"
+                                    android:textColor="@color/grey_828990"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/litable"
+                            android:layout_marginTop="17dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+
+                                settable="@{model.order_type}"
+                                android:id="@+id/rbtable"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-4.5dp"
+                                android:theme="@style/MyRadioButton" />
+
+                            <LinearLayout
+                                android:id="@+id/litable2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/grillmedium"
+                                    android:includeFontPadding="false"
+                                    android:text="Table"
+                                    android:textColor="@color/black_25303c"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8.3dp"
+                                    android:fontFamily="@font/grillmedium"
+                                    android:includeFontPadding="false"
+                                    android:text="Order Taken from Table"
                                     android:textColor="@color/grey_828990"
                                     android:textSize="14sp" />
                             </LinearLayout>
@@ -893,6 +938,23 @@
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="15sp" />
+
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rect_green_dark"
+                    android:fontFamily="@font/grillbold"
+                    android:includeFontPadding="false"
+                    android:paddingStart="36.3dp"
+                    android:paddingEnd="36.3dp"
+                    android:text="Checkout"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 

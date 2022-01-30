@@ -9,13 +9,12 @@ import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.base.BaseFragment
 import com.ankursolution.jffmyadmin.data.model.AddToCartRequestModel
 import com.ankursolution.jffmyadmin.data.model.CommonRequestModel
+import com.ankursolution.jffmyadmin.data.model.OrderItemRequestModel
 import com.ankursolution.jffmyadmin.data.model.adapter.AddToCartProductsAdapter
-import com.ankursolution.jffmyadmin.data.model.adapter.CategoryAdapter
-import com.ankursolution.jffmyadmin.data.model.adapter.ProductsAdapter
 import com.ankursolution.jffmyadmin.data.model.session.SessionManager
-import com.ankursolution.jffmyadmin.databinding.FragmentShowCategoryBinding
 import com.ankursolution.jffmyadmin.databinding.FragmentShowProductBinding
 import com.ankursolution.jffmyadmin.ui.HomeViewModel
+import com.ankursolution.jffmyadmin.utils.ext.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -34,6 +33,7 @@ class TakeOrdersProductsFragment : BaseFragment<FragmentShowProductBinding,HomeV
         getViewDataBinding().rvProducts.adapter = adapter
         getProductsData()
 
+
     }
 
     private fun getProductsData() {
@@ -46,32 +46,17 @@ class TakeOrdersProductsFragment : BaseFragment<FragmentShowProductBinding,HomeV
                         adapter.submitList(it)
 
                         adapter.addToCartClick = {pid,vid,quan->
-                        homeViewModel.addToCart(AddToCartRequestModel(sessionManager.getUserAuth()?.userid,pid,vid,sessionManager.getUserAuth()?.userid,quan = quan.toString(),type = "add")).observe(viewLifecycleOwner,
-                            {
-                            it.getValueOrNull()?.let {
-                                if (it.status==1)
-                                {
-                                    showToast("successfully added into cart")
-                                }
-                            }
-                            })
+                            addToCart(pid,vid,quan)
                         }
 
 
                         adapter.updateCart = {pid,vid,quan->
                             var type = if (quan<1)
-                                "delete"
-                            else "update"
-                            homeViewModel.addToCart(AddToCartRequestModel(sessionManager.getUserAuth()?.userid,pid,vid,sessionManager.getUserAuth()?.userid,quan = quan.toString(),type = type)).observe(viewLifecycleOwner,
-                                {
-                                    it.getValueOrNull()?.let {
-                                        if (it.status==1)
-                                        {
-                                            showToast("Cart updated successfully")
+                                Constants.DELETE_REQUEST
+                            else Constants.UPDATE_REQUEST
 
-                                        }
-                                    }
-                                })
+
+                            updateCart(pid,vid,quan,type)
                         }
 
                     }
@@ -79,6 +64,74 @@ class TakeOrdersProductsFragment : BaseFragment<FragmentShowProductBinding,HomeV
 
             }
         })
+    }
+
+    private fun updateCart(pid: String?, vid: String?, quan: Int, type: String) {
+        if (Constants.SELECTED_ORDER.isNullOrEmpty().not())
+        {
+            homeViewModel.updateOrderItem(OrderItemRequestModel(Constants.SELECTED_ORDER,Constants.USER_ID,pid,vid,quan,Constants.UPDATE_REQUEST)).observe(viewLifecycleOwner,
+                {
+                    it.getValueOrNull()?.let {
+                        if(it.status==1)
+                        {
+                            showToast(it.result)
+                        }else{
+                            showToast("Somthing went wrong try again")
+                        }
+                    }
+                })
+
+        }else {
+
+            homeViewModel.addToCart(
+                AddToCartRequestModel(
+                    sessionManager.getUserAuth()?.userid,
+                    pid,
+                    vid,
+                    sessionManager.getUserAuth()?.userid,
+                    quan = quan.toString(),
+                    type = type
+                )
+            ).observe(viewLifecycleOwner,
+                {
+                    it.getValueOrNull()?.let {
+                        if (it.status == 1) {
+                            showToast(getString(R.string.cart_success))
+
+                        }
+                    }
+                })
+        }
+    }
+
+    private fun addToCart(pid: String?, vid: String?, quan: Int) {
+
+        if (Constants.SELECTED_ORDER.isNullOrEmpty().not())
+        {
+            homeViewModel.updateOrderItem(OrderItemRequestModel(Constants.SELECTED_ORDER,Constants.USER_ID,pid,vid,quan,Constants.ADD_REQUEST)).observe(viewLifecycleOwner,
+                 {
+                    it.getValueOrNull()?.let {
+                        if(it.status==1)
+                        {
+                            showToast(it.result)
+                        }else{
+                            showToast("Somthing went wrong try again")
+                        }
+                    }
+                })
+
+
+        }else{
+            homeViewModel.addToCart(AddToCartRequestModel(sessionManager.getUserAuth()?.userid,pid,vid,sessionManager.getUserAuth()?.userid,quan = quan.toString(),type = "add")).observe(viewLifecycleOwner,
+                {
+                    it.getValueOrNull()?.let {
+                        if (it.status==1)
+                        {
+                            showToast("successfully added into cart")
+                        }
+                    }
+                })
+        }
     }
 
     override fun getLayoutId() = R.layout.fragment_show_product

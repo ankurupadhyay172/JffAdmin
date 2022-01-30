@@ -49,12 +49,13 @@ class AllPendingOrdersAdapter @Inject constructor():
 
         binding.update.setOnClickListener {v->
 
-            var status =listOf("pending","cooking","ongoing")
+            val types =v.context.resources.getStringArray(R.array.order_status)
+
             var adapter = OrderStatusAdapter(binding.mainItem.context,R.layout.order_status_item,
-                status)
+                types.toList())
             AlertDialog.Builder(v.context).setTitle("Update Status")
                 .setAdapter(adapter) { dialog, which ->
-                updateState?.invoke(item?.id,status[which])
+                updateState?.invoke(item?.id,types[which])
                 }.create().show()
         }
 

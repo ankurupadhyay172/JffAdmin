@@ -22,7 +22,7 @@ class CartProductsAdapter @Inject constructor():
             oldItem: CartOrderResult.Result,
             newItem: CartOrderResult.Result
         ): Boolean {
-            return oldItem.cart_id == newItem.cart_id
+            return oldItem.p_id == newItem.cart_id
         }
         override fun areContentsTheSame(
             oldItem: CartOrderResult.Result,

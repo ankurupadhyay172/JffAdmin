@@ -32,9 +32,23 @@ class HomePagerFragment:BaseFragment<FragmentHomePagerBinding,HomeViewModel>() {
         getViewDataBinding().homeviewmodel = homeViewModel
 
         getOrders(order_status)
+        updateOrderStatus()
 
 
+    }
 
+    private fun updateOrderStatus() {
+        adapter.updateState ={id,status->
+            homeViewModel.updateOrder(OrderUpdateRequestModel(id = id,status =status)).observe(viewLifecycleOwner,
+                {
+                    it.getValueOrNull().let {
+                        val home = parentFragment as HomeFragment
+                        home.updateFragment()
+                        showToast("Status update successfully"+it?.status)
+
+                    }
+                })
+        }
     }
 
     private fun getOrders(str:String?) {
@@ -48,16 +62,7 @@ class HomePagerFragment:BaseFragment<FragmentHomePagerBinding,HomeViewModel>() {
                 if (it.status==1)
                {
 
-                   adapter.updateState ={id,status->
-                       homeViewModel.updateOrder(OrderUpdateRequestModel(id = id,status =status)).observe(viewLifecycleOwner,
-                           {
-                           it.getValueOrNull().let {
 
-                                 showToast("Status update successfully"+it?.status)
-
-                           }
-                           })
-                   }
                 adapter.submitList(it.result)
 
                }else getViewDataBinding().isVisible = true

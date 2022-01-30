@@ -21,6 +21,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvOrders"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -28,6 +30,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:visibility="@{isVisible?View.VISIBLE:View.GONE}"
+            android:textSize="35sp"
+            android:text="No Data found"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textAlignment="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -41,9 +55,7 @@
             bind:error="@{AppErrorsKt.toAppError(homeviewmodel.loadState.errorIfExists)}"
             layout="@layout/my_layout_loading"/>
 
-        <include
-            android:visibility="@{isVisible?View.VISIBLE:View.GONE}"
-            layout="@layout/empty_screen"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

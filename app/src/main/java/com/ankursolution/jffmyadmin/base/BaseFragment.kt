@@ -9,6 +9,7 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import com.ankursolution.jffmyadmin.utils.ext.Constants
 import com.ankursolution.jffmyadmin.utils.ext.autoCleared
 
 abstract class BaseFragment<T:ViewDataBinding,V:BaseViewModel>: Fragment() {
@@ -53,6 +54,7 @@ abstract class BaseFragment<T:ViewDataBinding,V:BaseViewModel>: Fragment() {
     fun showToast(message:String?){
     Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
     }
+
 
 
 }

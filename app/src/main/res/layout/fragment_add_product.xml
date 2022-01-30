@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.ankursolution.jffmyadmin.data.model.ProductModel.Result"/>
+        <variable
+            name="model"
+            type="Result" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg_fafafa"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16.7dp"
+            android:layout_marginEnd="16.7dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/grillbold"
+                android:includeFontPadding="false"
+                android:text="Product Name *"
+                android:textColor="@color/silver_909397"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edtProductName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_silver_border"
+                android:fontFamily="@font/grillmedium"
+                android:includeFontPadding="false"
+                android:inputType="textCapWords"
+                android:padding="15dp"
+                android:text="@{model.productName}"
+                android:textColor="@color/title_color_22282f"
+                android:textColorHint="@color/silver_909397"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16.7dp"
+            android:layout_marginEnd="16.7dp"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_marginTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/grillbold"
+                android:includeFontPadding="false"
+                android:text="Product Description"
+                android:textColor="@color/silver_909397"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/edtDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/rectangle_silver_border"
+                android:fontFamily="@font/grillmedium"
+                android:includeFontPadding="false"
+                android:inputType="textCapWords"
+                android:padding="15dp"
+                android:text="@{model.productDescription}"
+                android:textColor="@color/title_color_22282f"
+                android:textColorHint="@color/silver_909397"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/main_bg"
+                android:fontFamily="@font/grillmedium"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ProgressBar
+                android:visibility="gone"
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="44dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/main_bg"
+                android:fontFamily="@font/grillmedium"
+                android:text="Submit"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_marginTop="20dp"
+                android:id="@+id/selected_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

@@ -94,6 +94,70 @@ class HomeViewModel @Inject constructor(@ApplicationContext val context: Context
         }
     }
 
+    fun updateProduct(productRequestModel: ProductRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.updateProducts(productRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun getProductDetails(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.getProductDetails(commonRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun readProductVarient(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.readProductVarient(commonRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun updateProductVarient(productVarientRequestModel: ProductVarientRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.updateProductVarient(productVarientRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun createCategory(categoryRequestModel: CategoryRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.createCategory(categoryRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun updateCategory(categoryRequestModel: CategoryRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.updateCategory(categoryRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun createProduct(productRequestModel: ProductRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.createProduct(productRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun createProductVarient(productVarientRequestModel: ProductVarientRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.createProductVarient(productVarientRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
     fun addToCart(addToCartRequestModel: AddToCartRequestModel)= liveData(Dispatchers.IO){
         homeRepository.addToCart(addToCartRequestModel).toLoadingState().catch { e->
             loadState.postValue(LoadingState.Error(e))
@@ -129,8 +193,16 @@ class HomeViewModel @Inject constructor(@ApplicationContext val context: Context
         }
     }
 
-    fun completeJffOrder(commonRequestModel: CommonRequestModel)= liveData(Dispatchers.IO){
-        homeRepository.completeJffOrder(commonRequestModel).toLoadingState().catch { e->
+    fun completeJffOrder(updateRequestModel: OrderUpdateRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.completeJffOrder(updateRequestModel).toLoadingState().catch { e->
+            loadState.postValue(LoadingState.Error(e))
+        }.collect {
+            emit(it)
+        }
+    }
+
+    fun updateOrderItem(orderItemRequestModel: OrderItemRequestModel)= liveData(Dispatchers.IO){
+        homeRepository.updateOrderItem(orderItemRequestModel).toLoadingState().catch { e->
             loadState.postValue(LoadingState.Error(e))
         }.collect {
             emit(it)

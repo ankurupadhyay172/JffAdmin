@@ -63,6 +63,30 @@ interface ApiService {
     @POST("readproduct.php")
     suspend fun getProducts(@Body commonRequestModel: CommonRequestModel):ProductModel
 
+    @POST("updateproduct.php")
+    suspend fun updateProducts(@Body productRequestModel: ProductRequestModel):CommonResponseModel
+
+    @POST("productdetails.php")
+    suspend fun getProductDetails(@Body commonRequestModel: CommonRequestModel):ProductModel
+
+    @POST("readproductvarient.php")
+    suspend fun readProductVarient(@Body commonRequestModel: CommonRequestModel):ProductVarientModel
+
+    @POST("updateproductvarient.php")
+    suspend fun updateProductVarient(@Body productVarientRequestModel: ProductVarientRequestModel):CommonResponseModel
+
+    @POST("createcategory.php")
+    suspend fun createCategory(@Body categoryRequestModel: CategoryRequestModel):CommonResponseModel
+
+    @POST("updatecategory.php")
+    suspend fun updateCategory(@Body categoryRequestModel: CategoryRequestModel):CommonResponseModel
+
+    @POST("createproduct.php")
+    suspend fun createProduct(@Body productRequestModel: ProductRequestModel):CommonResponseModel
+
+    @POST("createproductvarient.php")
+    suspend fun createProductVarient(@Body productVarientRequestModel: ProductVarientRequestModel):CommonResponseModel
+
     @POST("addtocart.php")
     suspend fun addToCart(@Body addToCartRequestModel: AddToCartRequestModel):CommonResponseModel
 
@@ -77,7 +101,7 @@ interface ApiService {
     suspend fun getCartData(@Body commonRequestModel: CommonRequestModel):CartModel
 
     @POST("completeorder.php")
-    suspend fun completeJffOrder(@Body commonRequestModel: CommonRequestModel):CommonResponseModel
+    suspend fun completeJffOrder(@Body updateOrderUpdateRequestModel: OrderUpdateRequestModel):CommonResponseModel
 
 
     @POST("updatekhatauseramount.php")
@@ -86,4 +110,8 @@ interface ApiService {
 
     @POST("deletekhatauser.php")
     suspend fun deleteKhataUser(@Body commonRequestModel: CommonRequestModel):CommonResponseModel
+
+
+    @POST("updateorderitem.php")
+    suspend fun updateorderitem(@Body orderItemRequestModel: OrderItemRequestModel):CommonResponseModel
 }

@@ -4,16 +4,21 @@ import android.app.AlertDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import com.ankursolution.jffmyadmin.R
 import com.ankursolution.jffmyadmin.base.BaseListAdapter
 import com.ankursolution.jffmyadmin.data.model.*
 import com.ankursolution.jffmyadmin.databinding.*
+import com.ankursolution.jffmyadmin.ui.products.ShowProductsFragmentDirections
+import com.google.gson.Gson
 import javax.inject.Inject
 
 class ProductsAdapter @Inject constructor():
     BaseListAdapter<ProductModel.Result, ItemProductBinding>(DiffCallback()){
 
+    var delete:((id:String?)->Unit)? = null
+    var update:((model:String?)->Unit)? = null
     class DiffCallback:DiffUtil.ItemCallback<ProductModel.Result>(){
         override fun areItemsTheSame(
             oldItem: ProductModel.Result,
@@ -39,6 +44,14 @@ class ProductsAdapter @Inject constructor():
     override fun bind(binding: ItemProductBinding, item: ProductModel.Result?) {
 
         binding.model = item
+        binding.delete.setOnClickListener {
+            delete?.invoke(item?.id)
+        }
+        binding.edit.setOnClickListener {
+            update?.invoke(Gson().toJson(item))
+        }
+
+
         item?.varients.let {
 
             if (it.isNullOrEmpty().not())
@@ -56,11 +69,9 @@ class ProductsAdapter @Inject constructor():
         }
 
 
-//        binding.headerlayout.setOnClickListener {v->
-//            v?.findNavController()?.navigate(ShowCategoriesFragmentDirections.actionAddCategoriesFragmentToShowProductsFragment(item?.id))
-//
-//
-//        }
+        binding.itemView.setOnClickListener {v->
+            v?.findNavController()?.navigate(ShowProductsFragmentDirections.actionShowProductsFragmentToShowProductVarientFragment(item?.id))
+        }
 
 
     }

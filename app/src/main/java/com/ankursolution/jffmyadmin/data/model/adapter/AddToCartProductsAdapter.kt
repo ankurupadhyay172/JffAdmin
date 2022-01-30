@@ -16,6 +16,7 @@ class AddToCartProductsAdapter @Inject constructor():
 
     var addToCartClick:((pid:String?,vid:String?,quan:Int)->Unit)? = null
     var updateCart:((pid:String?,vid:String?,quan:Int)->Unit)? = null
+    var addToProduct:((pid:String?,product_name:String?,product_price:String?,product_image:String?,product_size:String?,quan:Int)->Unit)?=null
     class DiffCallback:DiffUtil.ItemCallback<ProductModel.Result>(){
         override fun areItemsTheSame(
             oldItem: ProductModel.Result,
@@ -64,6 +65,8 @@ class AddToCartProductsAdapter @Inject constructor():
             counter++
             binding.counter.setText(counter.toString())
             binding.isCartVisible = true
+
+
             addToCartClick?.invoke(item?.id,binding.varient?.id,counter)
         }
         binding.plus.setOnClickListener {

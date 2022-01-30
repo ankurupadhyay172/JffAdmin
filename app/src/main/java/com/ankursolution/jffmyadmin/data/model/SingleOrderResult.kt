@@ -31,14 +31,14 @@ data class SingleOrderResult (@SerializedName("order_details") val result : List
 
     data class Items (
 
-        @SerializedName("id") val id : String,
+        @SerializedName("orderitem_id") val id : String,
         @SerializedName("user_id") val user_id : String,
         @SerializedName("pid") val pid : String?,
-        @SerializedName("product_name") val product_name : String?,
-        @SerializedName("product_price") val product_price : String,
+        @SerializedName("productName") val product_name : String?,
+        @SerializedName("varientPrice") val product_price : String,
         @SerializedName("product_mrp") val product_mrp : String,
-        @SerializedName("product_image") val product_image : String,
-        @SerializedName("product_size") val product_size : String,
+        @SerializedName("image") val product_image : String,
+        @SerializedName("varientName") val product_size : String,
         @SerializedName("quan") val quan : String,
 
         )

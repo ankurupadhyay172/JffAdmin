@@ -15,6 +15,14 @@ fun RadioButton.setDelivery(text:String?){
     }
 }
 
+@BindingAdapter("settable")
+fun RadioButton.setTable(text:String?){
+    if (text==resources.getString(R.string.table))
+    {
+        this.isChecked = true
+    }
+}
+
 @BindingAdapter("settakeaway")
 fun RadioButton.setTakeAway(text:String?){
     if (text==resources.getString(R.string.takeaway))

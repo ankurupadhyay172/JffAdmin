@@ -58,6 +58,46 @@ class HomeRepository @Inject constructor(val homeServiceImp: HomeServiceImp) {
         emit(response)
     }
 
+    suspend fun updateProducts(productRequestModel: ProductRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.updateProducts(productRequestModel)
+        emit(response)
+    }
+
+    suspend fun getProductDetails(commonRequestModel: CommonRequestModel):Flow<ProductModel> = flow {
+        val response = homeServiceImp.api.getProductDetails(commonRequestModel)
+        emit(response)
+    }
+
+    suspend fun readProductVarient(commonRequestModel: CommonRequestModel):Flow<ProductVarientModel> = flow {
+        val response = homeServiceImp.api.readProductVarient(commonRequestModel)
+        emit(response)
+    }
+
+    suspend fun updateProductVarient(productVarientRequestModel: ProductVarientRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.updateProductVarient(productVarientRequestModel)
+        emit(response)
+    }
+
+    suspend fun createCategory(categoryRequestModel: CategoryRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.createCategory(categoryRequestModel)
+        emit(response)
+    }
+
+    suspend fun updateCategory(categoryRequestModel: CategoryRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.updateCategory(categoryRequestModel)
+        emit(response)
+    }
+
+    suspend fun createProduct(createProductRequestModel: ProductRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.createProduct(createProductRequestModel)
+        emit(response)
+    }
+
+    suspend fun createProductVarient(productVarientRequestModel: ProductVarientRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.createProductVarient(productVarientRequestModel)
+        emit(response)
+    }
+
     suspend fun addToCart(addToCartRequestModel: AddToCartRequestModel):Flow<CommonResponseModel> = flow {
         val response = homeServiceImp.api.addToCart(addToCartRequestModel)
         emit(response)
@@ -79,8 +119,13 @@ class HomeRepository @Inject constructor(val homeServiceImp: HomeServiceImp) {
     }
 
 
-    suspend fun completeJffOrder(commonRequestModel: CommonRequestModel):Flow<CommonResponseModel> = flow {
-        val response = homeServiceImp.api.completeJffOrder(commonRequestModel)
+    suspend fun completeJffOrder(updateRequestModel: OrderUpdateRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.completeJffOrder(updateRequestModel)
+        emit(response)
+    }
+
+    suspend fun updateOrderItem(orderItemRequestModel: OrderItemRequestModel):Flow<CommonResponseModel> = flow {
+        val response = homeServiceImp.api.updateorderitem(orderItemRequestModel)
         emit(response)
     }
 

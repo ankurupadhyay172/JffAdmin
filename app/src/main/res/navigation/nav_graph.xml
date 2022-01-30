@@ -119,8 +119,12 @@
             app:argType="string"
             app:nullable="true" />
         <action
-            android:id="@+id/action_singleOrderFragment_to_showCategoriesFragment"
-            app:destination="@id/showCategoriesFragment" />
+            android:id="@+id/action_singleOrderFragment_to_takeOrdersFragment"
+            app:destination="@id/takeOrdersFragment" />
+        <action
+            android:id="@+id/action_singleOrderFragment_to_singleProductFragment"
+            app:destination="@id/singleProductFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/editOrderItemsFragment"
@@ -158,7 +162,7 @@
     <fragment
         android:id="@+id/takeOrdersFragment"
         android:name="com.ankursolution.jffmyadmin.ui.takeorders.TakeOrdersFragment"
-        android:label="TakeOrdersFragment" >
+        android:label="Take Order" >
         <action
             android:id="@+id/action_takeOrdersFragment_to_takeOrdersProductsFragment"
             app:destination="@id/takeOrdersProductsFragment" />
@@ -166,25 +170,34 @@
     <fragment
         android:id="@+id/showCategoriesFragment"
         android:name="com.ankursolution.jffmyadmin.ui.products.ShowCategoriesFragment"
-        android:label="AddCategoriesFragment"
+        android:label="Manage Categories"
         tools:layout="@layout/item_category">
         <action
             android:id="@+id/action_showCategoriesFragment_to_showProductsFragment"
             app:destination="@id/showProductsFragment" />
+        <action
+            android:id="@+id/action_showCategoriesFragment_to_addCategoryFragment"
+            app:destination="@id/addCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/showProductsFragment"
         android:name="com.ankursolution.jffmyadmin.ui.products.ShowProductsFragment"
-        android:label="ShowProductsFragment" >
+        android:label="Manage Products" >
         <argument
             android:name="cat_id"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_showProductsFragment_to_addProductFragment"
+            app:destination="@id/addProductFragment" />
+        <action
+            android:id="@+id/action_showProductsFragment_to_showProductVarientFragment"
+            app:destination="@id/showProductVarientFragment" />
     </fragment>
     <fragment
         android:id="@+id/takeOrdersProductsFragment"
         android:name="com.ankursolution.jffmyadmin.ui.takeorders.TakeOrdersProductsFragment"
-        android:label="TakeOrdersProductsFragment" >
+        android:label="Products" >
         <argument
             android:name="cat_id"
             app:argType="string"
@@ -231,6 +244,75 @@
             app:destination="@id/homeFragment"
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/singleProductFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.SingleProductFragment"
+        android:label="SingleProductFragment"
+        tools:layout="@layout/fragment_single_product">
+        <argument
+            android:name="pid"
+            app:nullable="true"
+            app:argType="string" />
+        <argument
+            android:name="varient"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCategoryFragment"
+        android:name="com.ankursolution.jffmyadmin.AddCategoryFragment"
+        android:label="AddCategoryFragment" >
+        <argument
+            android:name="model"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.products.AddProductFragment"
+        android:label="AddProductFragment"
+        tools:layout="@layout/fragment_add_product">
+        <argument
+            android:name="cat_id"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="model"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
+    </fragment>
+    <fragment
+        android:id="@+id/showProductVarientFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.products.ShowProductVarientFragment"
+        android:label="Manage Product Varient"
+        tools:layout="@layout/fragment_show_product_varient">
+        <action
+            android:id="@+id/action_showProductVarientFragment_to_addProductVarientsFragment"
+            app:destination="@id/addProductVarientsFragment" />
+
+        <argument
+            android:name="pid"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addProductVarientsFragment"
+        android:name="com.ankursolution.jffmyadmin.ui.products.AddProductVarientsFragment"
+        android:label="Manage Varient"
+        tools:layout="@layout/fragment_add_product_varient">
+
+        <argument
+            android:name="pid"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="model"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="na" />
     </fragment>
 
 </navigation>
